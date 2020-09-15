@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "---Brocahontaz installation script---\n"
 echo "Installing the tools I need :-)\n"
 echo "-------------------------------------\n"
@@ -88,6 +90,13 @@ sudo apt install ansible -y
 echo "Installing Stern"
 sudo curl https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o ~/bin/stern
 sudo chmod +x ~/bin/stern
+
+# Install mosquitto
+echo "Installing mosquitto"
+sudo apt-add-repository ppa:mosquitto-dev/mosquitto-ppa
+sudo apt-get update
+sudo apt-get install mosquitto -y
+sudo apt-get install mosquitto-clients -y
 
 # Clean up device
 echo "Post-install cleanup"
