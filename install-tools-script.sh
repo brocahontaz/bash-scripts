@@ -6,7 +6,11 @@ echo "-------------------------------------\n"
 echo "Updating repositories and upgrading"
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
+sudo apt-get dist-upgrade -
+
+# Install curl
+echo "Installing curl"
+sudo apt-get install curl -y
 
 # Install htop
 echo "Installing htop"
@@ -49,7 +53,7 @@ sudo apt-get install code -y
 # Install Docker
 echo "Installing Docker"
 echo "Setting up repository"
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+sudo apt-get install apt-transport-https ca-certificates gnupg-agent software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository \
@@ -79,6 +83,11 @@ echo "Installing Ansible"
 sudo apt install software-properties-common -y
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible -y
+
+# Install Stern
+echo "Installing Stern"
+sudo curl https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64 -o ~/bin/stern
+sudo chmod +x ~/bin/stern
 
 # Clean up device
 echo "Post-install cleanup"
